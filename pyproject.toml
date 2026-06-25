@@ -1,0 +1,42 @@
+[project]
+name = "confidence-scorer"
+version = "0.1.0"
+description = "A research agent with calibrated uncertainty: searches web and academic sources, and reports how many sources support vs contradict each claim, with a confidence score."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "langgraph",
+    "langchain",
+    "langchain-core",
+    "langchain-community",
+    "litellm",
+    "ddgs",
+    "tavily-python",
+    "chromadb",
+    "python-dotenv",
+    "httpx",
+    "beautifulsoup4",
+    "arxiv",
+    "pydantic",
+    "rich",
+]
+
+[project.scripts]
+confidence_scorer = "confidence_scorer.cli:main"
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "pytest-mock>=3.14",
+]
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["confidence_scorer*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
